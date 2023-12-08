@@ -1,67 +1,98 @@
 body {
     margin: auto;
     max-width: 580px;
-    font-size: 16px; /* 字体大小略微调整以提高可读性 */
+    font-size: 16px; /* 增加字体大小以提升可读性 */
     font-family: Helvetica, Arial, sans-serif;
-    background-color: #f3f3f3; /* 背景颜色调整为较浅色调 */
-    color: #333; /* 正文颜色 */
+    background-color: #f0f0f0; /* 调整背景色 */
+    color: #333; /* 调整文字颜色 */
 }
 
-/* 根据图片主题色调整 */
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #242424; /* 深色背景 */
+    background-color: #333; /* 维持原色 */
 }
 
 nav li a {
     display: block;
-    color: white; /* 文字颜色 */
+    color: white;
     text-align: center;
-    padding: 14px 16px; /* 调整填充使得导航项更加突出 */
+    padding: 14px 16px; /* 调整填充，使其更加宽松 */
     text-decoration: none;
 }
 
-nav li a:hover {
-    background-color: #404040; /* 鼠标悬停颜色 */
-}
-
-/* 警告框根据图片主题色调整 */
 .alert {
-    /* ...保持现有样式... */
-    background-color: #f8d7da; /* 警告框背景色调整为淡红色调 */
-    border-color: #f5c2c7; /* 边框颜色调整为相配的红色调 */
-    color: #842029; /* 文字颜色调整为深红色 */
+    /* ... */
+    background-color: #f8f8f8; /* 调整为更轻的灰色 */
+    color: #333; /* 文字颜色调整为深色 */
+    border: 1px solid #ddd; /* 边框颜色调整为淡灰色 */
+    /* ... */
 }
 
-/* 按钮样式调整 */
-.btn {
-    /* ...保持现有样式... */
-    background-color: #555555; /* 按钮背景色调整为灰色 */
-    color: white; /* 文字颜色为白色 */
-    border: none; /* 边框去除 */
+.movie-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); /* 添加轻微的阴影效果 */
 }
 
-.btn:hover {
-    background-color: #242424; /* 按钮悬停背景色调整 */
-    color: white;
-}
-
-/* 电影列表样式调整 */
 .movie-list li {
-    /* ...保持现有样式... */
-    background-color: white; /* 每个列表项的背景色为白色 */
+    padding: 20px; /* 增加填充 */
+    border-bottom: none; /* 移除边框 */
+    background-color: #fff; /* 背景色调整为纯白 */
 }
 
 .movie-list li:hover {
-    background-color: #eeeeee; /* 列表项悬停背景色调整为浅灰色 */
+    background-color: #f2f2f2; /* 鼠标悬停效果 */
 }
 
-/* 页脚样式调整 */
 footer {
-    /* ...保持现有样式... */
-    background-color: #242424; /* 页脚背景色调整为深色 */
-    color: white; /* 页脚文字颜色调整为白色 */
+    /* ... */
+    background-color: #333; /* 底部背景颜色 */
+    color: white; /* 底部文字颜色 */
+    padding: 15px 0; /* 增加填充 */
+}
+
+/* index分页控制相关 */
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.page-item {
+    display: inline;
+}
+
+.page-link {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.page-item.active .page-link {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.page-item.disabled .page-link {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+/*居中显示*/
+.center {
+    text-align: center;
 }

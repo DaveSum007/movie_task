@@ -44,22 +44,14 @@ class MovieActorRelation(db.Model):
     actor_id = db.Column(db.String(10), db.ForeignKey('actor_info.actor_id'), nullable=False)
     relation_type = db.Column(db.String(20))
 
-name = 'Grey Li'
-movies = [
-    {'title': 'My Neighbor Totoro', 'year': '1988'},
-    {'title': 'Dead Poets Society', 'year': '1989'},
-    {'title': 'A Perfect World', 'year': '1993'},
-    {'title': 'Leon', 'year': '1994'},
-    {'title': 'Mahjong', 'year': '1996'},
-    {'title': 'Swallowtail Butterfly', 'year': '1996'},
-    {'title': 'King of Comedy', 'year': '1999'},
-    {'title': 'Devils on the Doorstep', 'year': '1999'},
-    {'title': 'WALL-E', 'year': '2008'},
-    {'title': 'The Pork of Music', 'year': '2012'},
-]
+
 @app.route('/')
-def index():
-    return render_template('index.html',name=name,movies=movies)
+@app.route('/index/<int:page>')
+def index(page=1):
+    per_page=10#每页显示的数量
+    pagination=MovieInfo.query.paginate(page=page,per_page=per_page,error_out=False)
+    movies=pagination.items
+    return render_template('index.html',name='孙大伟',movies=movies,pagination=pagination)
 
 @app.route('/test_connection')
 def test_connection():
