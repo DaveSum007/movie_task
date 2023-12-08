@@ -1,0 +1,67 @@
+body {
+    margin: auto;
+    max-width: 580px;
+    font-size: 16px; /* 字体大小略微调整以提高可读性 */
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #f3f3f3; /* 背景颜色调整为较浅色调 */
+    color: #333; /* 正文颜色 */
+}
+
+/* 根据图片主题色调整 */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #242424; /* 深色背景 */
+}
+
+nav li a {
+    display: block;
+    color: white; /* 文字颜色 */
+    text-align: center;
+    padding: 14px 16px; /* 调整填充使得导航项更加突出 */
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #404040; /* 鼠标悬停颜色 */
+}
+
+/* 警告框根据图片主题色调整 */
+.alert {
+    /* ...保持现有样式... */
+    background-color: #f8d7da; /* 警告框背景色调整为淡红色调 */
+    border-color: #f5c2c7; /* 边框颜色调整为相配的红色调 */
+    color: #842029; /* 文字颜色调整为深红色 */
+}
+
+/* 按钮样式调整 */
+.btn {
+    /* ...保持现有样式... */
+    background-color: #555555; /* 按钮背景色调整为灰色 */
+    color: white; /* 文字颜色为白色 */
+    border: none; /* 边框去除 */
+}
+
+.btn:hover {
+    background-color: #242424; /* 按钮悬停背景色调整 */
+    color: white;
+}
+
+/* 电影列表样式调整 */
+.movie-list li {
+    /* ...保持现有样式... */
+    background-color: white; /* 每个列表项的背景色为白色 */
+}
+
+.movie-list li:hover {
+    background-color: #eeeeee; /* 列表项悬停背景色调整为浅灰色 */
+}
+
+/* 页脚样式调整 */
+footer {
+    /* ...保持现有样式... */
+    background-color: #242424; /* 页脚背景色调整为深色 */
+    color: white; /* 页脚文字颜色调整为白色 */
+}
