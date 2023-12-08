@@ -96,3 +96,23 @@ footer {
 .center {
     text-align: center;
 }
+
+/*豆瓣按钮*/
+.btn-douban {
+    padding: 5px 10px;
+    background-color: #00b51a; /* 豆瓣的绿色调 */
+    color: white; /* 白色文字 */
+    text-decoration: none;
+    border: none; /* 去除边框 */
+    border-radius: 4px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease; /* 平滑过渡效果 */
+}
+
+.btn-douban:hover {
+    background-color: #009a16; /* 鼠标悬停时更深的绿色 */
+}
+
+.float-right {
+    float: right;
+}

@@ -9,7 +9,10 @@
         {% for movie in movies %}
         <li>
             <span>{{ movie.movie_name }} - {{ movie.year }}</span>
-            <span class="float-right">{{ movie.country }}</span>
+            <!--豆瓣连接按钮-->
+            <span class="float-right">
+                <a href="https://search.douban.com/movie/subject_search?search_text={{movie.movie_name}}&cat=1002" class="btn btn-douban" target="_blank">豆瓣</a>
+            </span>
         </li>
         {% endfor %}
     </ul>

@@ -4,14 +4,17 @@
     <meta charset="utf-8">
     <title>{% block title %}{{ name }}'s Movie List{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/head_photo.jpg') }}">
     {% block head %}{% endblock %}
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('index') }}">首页</a></li>
             <!-- Other navigation items here -->
+            <li><a href="{{ url_for('add_movie') }}">添加电影条目</a></li>
+            <li><a href="{{ url_for('search_movie') }}">查询电影</a></li>
+            <li><a href="{{ url_for('search_personnel') }}">查询演职人员</a></li>
         </ul>
     </nav>
 
