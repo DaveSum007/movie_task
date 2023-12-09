@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ movie.movie_name }} - Movie Details{% endblock %}
+
+{% block content %}
+<div class="movie-details">
+    <h1>{{ movie.movie_name }} ({{ movie.year }})</h1>
+    <p><strong>Release Date:</strong> {{ movie.release_date.strftime('%Y-%m-%d') if movie.release_date else 'N/A' }}</p>
+    <p><strong>Country:</strong> {{ movie.country }}</p>
+    <p><strong>Type:</strong> {{ movie.type }}</p>
+    <p><strong>Box Office:</strong> {{ box.box | default('N/A', true) }}</p>
+
+    <h2>Actors</h2>
+    {% if actor_relations %}
+    <ul>
+        {% for act_rel, actor in actor_relations %}
+        <li>
+            {{ actor.actor_name }} - {{ actor.gender }} - {{ actor.country }} - Relation: {{ act_rel.relation_type }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No actors found for this movie.</p>
+    {% endif %}
+</div>
+{% endblock %}

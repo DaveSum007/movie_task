@@ -8,7 +8,9 @@
     <ul class="movie-list">
         {% for movie in movies %}
         <li>
-            <span>{{ movie.movie_name }} - {{ movie.year }}</span>
+            <span>
+            <a href="{{ url_for('movie_detail', movie_id=movie.movie_id) }}">{{ movie.movie_name }}</a> - {{ movie.year }}
+            </span>
             <!--豆瓣连接按钮-->
             <span class="float-right">
                 <a href="https://search.douban.com/movie/subject_search?search_text={{movie.movie_name}}&cat=1002" class="btn btn-douban" target="_blank">豆瓣</a>

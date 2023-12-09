@@ -121,20 +121,25 @@ def add_movie():
     # 如果是 GET 请求，则渲染添加电影条目的页面
     return render_template('add_movie.html')
 
+@app.route('/movie/<movie_id>')
+def movie_detail(movie_id):
+    # 查询电影信息
+    movie = MovieInfo.query.get_or_404(movie_id)
+
+    # 查询电影的票房信息
+    box = MoveBox.query.filter_by(movie_id=movie_id).first()
+
+    # 查询与电影相关的演员信息
+    actor_relations = db.session.query(MovieActorRelation, ActorInfo).join(ActorInfo, MovieActorRelation.actor_id == ActorInfo.actor_id).filter(MovieActorRelation.movie_id == movie_id).all()
+
+    # 将查询结果传递给模板
+    return render_template('movie_detail.html', movie=movie, box=box, actor_relations=actor_relations)
+
 @app.errorhandler(404) # 传入要处理的错误代码
 def page_not_found(e): # 接受异常对象作为参数
     return render_template('404.html', user=admin), 404
 
-@app.route('/test_connection')
-def test_connection():
-    try:
-        result=MovieInfo.query.first()
-        if result is not None:
-            return f'Successfully connected to database! first info is {result.movie_name}'
-        else:
-            return 'Successfully connected to database! But no data in database!'
-    except Exception as e:
-        return f"连接失败{e}"
+
 
 
 
