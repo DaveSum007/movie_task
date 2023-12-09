@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="search-actor-form">
+    <h1>Search for Actors by Movies</h1>
+    <form method="post" action="{{ url_for('search_actor') }}">
+        <div class="form-group">
+            <label for="movie_names">Movie Names (电影名称用空格间隔):</label>
+            <input type="text" id="movie_names" name="movie_names" class="form-control">
+        </div>
+
+        <input type="submit" value="Search" class="btn btn-primary">
+    </form>
+</div>
+{% endblock %}

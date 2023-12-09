@@ -158,6 +158,25 @@ def search_movie():
 
     return render_template('search_movie.html')
 
+@app.route('/search_actor', methods=['GET', 'POST'])
+def search_actor():
+    if request.method == 'POST':
+        movie_names = request.form.get('movie_names').split(' ')
+        movie_names = [name.strip() for name in movie_names]
+
+        # 查询出演了所有这些电影的演员
+        actors = db.session.query(ActorInfo)\
+            .join(MovieActorRelation, ActorInfo.actor_id == MovieActorRelation.actor_id)\
+            .join(MovieInfo, MovieInfo.movie_id == MovieActorRelation.movie_id)\
+            .filter(MovieInfo.movie_name.in_(movie_names))\
+            .group_by(ActorInfo.actor_id)\
+            .having(db.func.count(MovieInfo.movie_id) == len(movie_names))\
+            .all()
+
+        return render_template('actor_results.html', actors=actors)
+
+    return render_template('search_actor.html')
+
 @app.errorhandler(404) # 传入要处理的错误代码
 def page_not_found(e): # 接受异常对象作为参数
     return render_template('404.html', user=admin), 404

@@ -1,10 +1,10 @@
 body {
     margin: auto;
-    max-width: 580px;
-    font-size: 16px; /* 增加字体大小以提升可读性 */
+    max-width: 80%; /* Increased from 580px for better responsiveness */
+    font-size: 16px; /* Improved readability */
     font-family: Helvetica, Arial, sans-serif;
-    background-color: #f0f0f0; /* 调整背景色 */
-    color: #333; /* 调整文字颜色 */
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Dark text color for contrast */
 }
 
 nav ul {
@@ -12,19 +12,26 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333; /* 维持原色 */
+    background-color: #333; /* Dark background for navbar */
+    display: flex; /* Using flexbox for modern layout */
+    justify-content: space-around; /* Evenly spacing navigation items */
 }
 
 nav li {
-    float: left;
+    /* Removed float and incorporated into flexbox layout above */
 }
 
 nav li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px; /* 调整填充，使其更加宽松 */
-    text-decoration: none;
+    padding: 14px 16px; /* Comfortable padding */
+    text-decoration: none; /* Removing underline from links */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+nav li a:hover {
+    color: #4CAF50; /* Green color on hover for interactivity */
 }
 
 .alert {

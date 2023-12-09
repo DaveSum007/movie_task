@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="actor-results">
+    <h1>Actors Found</h1>
+    {% if actors %}
+    <ul>
+        {% for actor in actors %}
+        <li>{{ actor.actor_name }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No actors found.</p>
+    {% endif %}
+</div>
+{% endblock %}
