@@ -8,7 +8,7 @@ from datetime import datetime
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost/movieDB'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app.secret_key='123456'
 admin='孙大伟'
 # 初始化数据库连接:
 db = SQLAlchemy(app)
@@ -134,6 +134,29 @@ def movie_detail(movie_id):
 
     # 将查询结果传递给模板
     return render_template('movie_detail.html', movie=movie, box=box, actor_relations=actor_relations)
+
+@app.route('/search_movie', methods=['GET', 'POST'])
+def search_movie():
+    if request.method == 'POST':
+        movie_name = request.form.get('movie_name')
+        actor_name = request.form.get('actor_name')
+        release_date = request.form.get('release_date')
+
+        # 根据输入信息构建查询
+        query = db.session.query(MovieInfo)
+        if movie_name:
+            query = query.filter(MovieInfo.movie_name.like(f'%{movie_name}%'))
+        if actor_name:
+            query = query.join(MovieActorRelation, MovieInfo.movie_id == MovieActorRelation.movie_id)\
+                         .join(ActorInfo, ActorInfo.actor_id == MovieActorRelation.actor_id)\
+                         .filter(ActorInfo.actor_name.like(f'%{actor_name}%'))
+        if release_date:
+            query = query.filter(MovieInfo.release_date == release_date)
+
+        results = query.all()
+        return render_template('search_results.html', movies=results)
+
+    return render_template('search_movie.html')
 
 @app.errorhandler(404) # 传入要处理的错误代码
 def page_not_found(e): # 接受异常对象作为参数
